@@ -19,8 +19,6 @@ public abstract class TargetIntent {
 
     private Map<String, String> queryParams;
 
-    public int type;
-
     private Map<String, String> extraParams = new HashMap<>(3);
 
     public TargetIntent(String name) {
@@ -35,11 +33,6 @@ public abstract class TargetIntent {
 
     public TargetIntent component(String compo){
         this.component = compo;
-        return this;
-    }
-
-    public TargetIntent type(int type){
-        this.type = type;
         return this;
     }
 
@@ -108,10 +101,6 @@ public abstract class TargetIntent {
 
     public Map<String, String> getQueryParams() {
         return queryParams;
-    }
-
-    public int getType() {
-        return type;
     }
 
     public Map<String, String> getExtraParams() {
