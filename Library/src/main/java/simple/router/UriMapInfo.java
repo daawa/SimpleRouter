@@ -14,7 +14,7 @@ public class UriMapInfo {
     String scheme;//? using pattern
     String host; //? using pattern
 
-    String path;//? using pattern
+    String path;
     String pathParamPattern;
 
     /**

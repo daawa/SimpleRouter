@@ -9,21 +9,30 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name="simple.router.sample.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="simple.router.pages.WakeAppActivity"/>
+        <activity android:name="simple.router.pages.WakeAppActivity" />
         <activity android:name="simple.router.pages.RouterActivity">
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-                <data android:host="main"/>
-                <data android:scheme="myapp"/>
+                <action android:name="android.intent.action.VIEW" />
+
+                <data android:host="main" />
+                <data android:scheme="myapp" />
             </intent-filter>
         </activity>
+
+        <receiver android:name="simple.router.sample.NotificationReceiver">
+            <intent-filter>
+                <action android:name="meixue.163.notification" />
+            </intent-filter>
+        </receiver>
+
+        <activity android:name="simple.router.sample.TestActivity"></activity>
     </application>
 
 </manifest>

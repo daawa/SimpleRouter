@@ -23,8 +23,8 @@ import java.util.regex.Pattern;
  */
 
 public class PageRouter {
-    private static List<UriMapInfo> sUriMap = new ArrayList<>(50);
-    private static Map<String, TargetIntent> pageMap = new HashMap<>(50);
+    //private static List<UriMapInfo> sUriMap = new ArrayList<>(50);
+    private static Map<UriMapInfo, TargetIntent> pageMap = new HashMap<>(50);
 
     private PageRouter() {
     }
@@ -37,11 +37,11 @@ public class PageRouter {
     }
 
     public static void registerPageEntry(UriMapInfo uriInfo, TargetIntent intent){
-        sUriMap.add(uriInfo);
+        //sUriMap.add(uriInfo);
         if(TextUtils.isEmpty(intent.getComponent())){
             intent.component(uriInfo.componentName);
         }
-        pageMap.put(uriInfo.componentName, intent);
+        pageMap.put(uriInfo, intent);
     }
 
     public static void route(Context context, String link) {
@@ -74,7 +74,8 @@ public class PageRouter {
 
 
         Uri uri = Uri.parse(sUri);
-        for (UriMapInfo info : sUriMap) {
+        //todo: respect the order of UriMapInfo objects ?
+        for (UriMapInfo info : pageMap.keySet()) {
             List<String> pathParams = null;
             Map<String, String> queryParams = null;
             if (match(info.scheme, uri.getScheme()) && match(info.host, uri.getHost())) {
@@ -107,7 +108,7 @@ public class PageRouter {
                     }
                 }
 
-                TargetIntent targetIntent = pageMap.get(info.componentName);
+                TargetIntent targetIntent = pageMap.get(info);
                 if (targetIntent != null) {
                     targetIntent.sourceUri(sUri);
                     targetIntent.pathParams(pathParams);
