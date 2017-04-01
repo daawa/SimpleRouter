@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 
-        PageRouter.registerPageEntry(UriMapInfo.one().scheme("myapp").host("testhost").pathParamPattern("/(\\w+)/(\\w+)").addQueryMap("url-key", "ARG-KEY"),
+        PageRouter.registerPageEntry(UriMapInfo.one().scheme("myapp").host("testhost").pathParamPattern("/(\\w+)/(\\w+)").addQueryMap("url-key", TestActivity.QUERY_KEY),
                 new TargetIntent() {
                     @Override
                     public Intent intent(Context context, List<String> extractedPathParams, Map<String, String> extractedQueryParams) {

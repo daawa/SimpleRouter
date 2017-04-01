@@ -99,6 +99,7 @@ public class PageRouter {
                 }
 
                 if(uri.getQueryParameterNames() != null){
+                    queryParams = new HashMap<>(uri.getQueryParameterNames().size());
                     for(String key : uri.getQueryParameterNames()){
                         String value = uri.getQueryParameter(key);
                         if (!info.queryParamMap.isEmpty()) {
